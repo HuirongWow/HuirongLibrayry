@@ -1,25 +1,24 @@
 <script>
-import {get,showSuccess} from './util'
-import qcloud from 'wafer2-client-sdk'
-import config from './config'
+// import {get,showSuccess} from './util'
+// import qcloud from 'wafer2-client-sdk'
+// import config from './config'
 export default {
   async created () {
-      let usr = wx.getStorageSync('userinfo')
-      if(!usr){
-      // 设置登录地址
-        qcloud.setLoginUrl(config.loginUrl);
-        qcloud.login({
-        success: function (userInfo) {
-            console.log('登录成功', userInfo);
-            showSuccess('登陆成功')
-            wx.setStorageSync('userinfo',userinfo);
-        },
-        fail: function (err) {
-            console.log('登录失败', err);
-        }
-        });
-}
-
+    //       let usr = wx.getStorageSync('userinfo')
+    //       if(!usr){
+    //       // 设置登录地址
+    //         qcloud.setLoginUrl(config.loginUrl);
+    //         qcloud.login({
+    //         success: function (userInfo) {
+    //             console.log('登录成功', userInfo);
+    //             showSuccess('登陆成功')
+    //             wx.setStorageSync('userinfo',userinfo);
+    //         },
+    //         fail: function (err) {
+    //             console.log('登录失败', err);
+    //         }
+    //         });
+    // }
 
     // console.log('Here')
     // const res = await get('/weapp/demo')
