@@ -20,6 +20,7 @@ function request (url, method, data) {
         if (res.data.code === 0) {
           resolve(res.data.data)
         } else {
+          showModal('失败', res.data.data.msg)
           reject(res.data)
         }
       }
@@ -33,16 +34,24 @@ export function showSuccess (text) {
     icon: 'success'
   })
 }
-export function showModal (text) {
+// export function showModal (title, content) {
+//   wx.showModal({
+//     title,
+//     content,
+//     showCancel: false
+//   })
+// }
+export function showModal (title, content) {
   wx.showModal({
-    title: '提示',
-    content: text,
-    success: function (res) {
-      if (res.confirm) {
-        console.log('确定')
-      } else if (res.cancel) {
-        console.log('取消')
-      }
-    }
+    title,
+    content,
+    showCancel: false
+    // success: function (res) {
+    //   if (res.confirm) {
+    //     console.log('确定')
+    //   } else if (res.cancel) {
+    //     console.log('取消')
+    //   }
+    // }
   })
 }

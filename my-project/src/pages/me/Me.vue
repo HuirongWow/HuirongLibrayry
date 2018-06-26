@@ -31,15 +31,14 @@ export default {
     }
   },
   methods: {
+    // 因为是请求，我用async封装一下。这是添加图书的功能
     async addBook (isbn) {
       console.log(isbn)
       const res = await post('/weapp/addbook', {
         isbn,
         openid: this.userinfo.openId
       })
-      if (res.code === 0 && res.data.title) {
-        showSuccess('添加成功', `${res.data.title}添加成功`)
-      }
+      showModal('添加成功', `${res.title}添加成功`)
     },
     //   扫码功能
     scanBook () {

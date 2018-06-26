@@ -10,6 +10,7 @@ const {mysql} = require('../qcloud')
 // 2.入库
 module.exports = async (ctx)=>{
     const {isbn,openid} = ctx.request.body
+    // 查询是否已有图书
     if (isbn && openid) {
         const findRes = await mysql('books').select().where('isbn', isbn)
         if (findRes.length) {
@@ -37,6 +38,7 @@ module.exports = async (ctx)=>{
             await mysql('books').insert({
                         isbn,openid,rate,title,image,alt,publisher,summary,price,tags,author
                     })
+                    // 在这里设置返回的值，只有title和msg
                     ctx.state.data = {
                         title,
                         msg:'success'
